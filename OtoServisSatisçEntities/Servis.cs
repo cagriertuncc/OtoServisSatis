@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,15 +11,20 @@ namespace OtoServisSatis.Entities
 	{
 		public int Id { get; set; }
 		public DateTime ServiseGelisTarihi { get; set; }
-		public string? AracSorunu { get; set; }
+		public string AracSorunu { get; set; }
 		public decimal ServisUcreti { get; set; }
 		public DateTime ServistenCikisTarihi { get; set; }
 		public string? YapilanIslemler { get; set; }
 		public bool GarantiKapsamindaMi { get; set; }
-		public string? AracPlaka { get; set; }
-		public string? Marka { get; set; }
+		[StringLength(25)]
+		public string AracPlaka { get; set; }
+		[StringLength(50)]
+		public string Marka { get; set; }
+		[StringLength(50)]
 		public string? Model { get; set; }
+		[StringLength(50)]
 		public string? KasaTipi { get; set; }
+		[StringLength(50)]
 		public string? SaseNo { get; set; }
 		public string? Notlar { get; set; }
 

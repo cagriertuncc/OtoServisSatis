@@ -1,7 +1,17 @@
+using Microsoft.EntityFrameworkCore.Storage;
+using OtoServisSatis.Data;
+using OtoServisSatis.Service.Abstract;
+using OtoServisSatis.Service.Concrete;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+//builder.Services.AddControllersWithViews();
+builder.Services.AddDbContext<DatabaseContext>();  //Sqle baðlar
+
+builder.Services.AddTransient(typeof(IService<>),typeof(Service<>));
 
 var app = builder.Build();
 
@@ -12,6 +22,7 @@ if (!app.Environment.IsDevelopment())
 	// The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
 	app.UseHsts();
 }
+
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
